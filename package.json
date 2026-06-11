@@ -1,10 +1,10 @@
 {
   "name": "copilot-log-request-tools",
   "displayName": "GH Copilot Request Log Tools",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Formatter and syntax highlighting for Copilot request artifacts captured from log files, especially system prompt sections.",
   "icon": "assets/icon.png",
-  "publisher": "harrybin",
+  "publisher": "Hatald Binkle [harrybin]",
   "engines": {
     "vscode": "^1.120.0"
   },

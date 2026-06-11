@@ -6,3 +6,5 @@ tsconfig.json
 *.vsix
 Untitled-1.copilotlog
 examples/sample.prompt.md
+.env
+.env.*

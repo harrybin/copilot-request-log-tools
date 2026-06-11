@@ -3,6 +3,9 @@
     "name": "Copilot Log Request",
     "patterns": [
         {
+            "include": "#file-tag-path"
+        },
+        {
             "include": "#metadata"
         },
         {
@@ -88,6 +91,21 @@
                     "name": "entity.name.section.copilot-log-request"
                 }
             }
+        },
+        "file-tag-path": {
+            "begin": "(<file>)",
+            "beginCaptures": {
+                "1": {
+                    "name": "entity.name.tag"
+                }
+            },
+            "end": "(</file>)",
+            "endCaptures": {
+                "1": {
+                    "name": "entity.name.tag"
+                }
+            },
+            "contentName": "string.other.path.copilot-log-request"
         },
         "html-tags": {
             "patterns": [
