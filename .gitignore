@@ -3,3 +3,4 @@ out/
 .vscode-test/
 *.vsix
 Untitled-1.copilotlog
+.env

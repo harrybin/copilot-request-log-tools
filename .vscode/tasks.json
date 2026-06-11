@@ -26,9 +26,10 @@
         {
             "label": "Package VSIX",
             "type": "shell",
-            "command": "npm version patch --no-git-tag-version && npx vsce package --allow-missing-repository --no-dependencies -y",
+            "command": "npm run package:vscode",
             "problemMatcher": [],
             "group": "build",
+            "detail": "Create a .vsix file for manual upload or local installation",
             "presentation": {
                 "reveal": "always",
                 "panel": "shared"
@@ -48,11 +49,12 @@
         {
             "label": "Compile and Install",
             "type": "shell",
-            "command": "npm version patch --no-git-tag-version && npm run compile && npx @vscode/vsce package --allow-missing-repository --no-dependencies && code --install-extension (Get-Item *.vsix | Sort-Object LastWriteTime -Descending | Select-Object -First 1).Name --force",
+            "command": "npm run compile && npm run package:vscode && code --install-extension (Get-Item *.vsix | Sort-Object LastWriteTime -Descending | Select-Object -First 1).Name --force",
             "problemMatcher": [
                 "$tsc"
             ],
             "group": "build",
+            "detail": "Compile TypeScript, package the extension, and install latest VSIX",
             "presentation": {
                 "reveal": "always",
                 "panel": "shared"
@@ -61,9 +63,10 @@
         {
             "label": "Publish Extension",
             "type": "shell",
-            "command": "npx vsce publish",
+            "command": "npm run publish:vscode",
             "problemMatcher": [],
             "group": "build",
+            "detail": "Publish to VS Code Marketplace (uses MARKETPLACE_TOKEN from .env or VSCE_PAT env var)",
             "presentation": {
                 "reveal": "always",
                 "panel": "shared"
