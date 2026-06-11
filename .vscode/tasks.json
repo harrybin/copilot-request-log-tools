@@ -1,0 +1,73 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "npm",
+            "script": "watch",
+            "problemMatcher": "$tsc-watch",
+            "isBackground": true,
+            "presentation": {
+                "reveal": "never"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "type": "npm",
+            "script": "compile",
+            "problemMatcher": "$tsc",
+            "group": "build",
+            "presentation": {
+                "reveal": "never"
+            }
+        },
+        {
+            "label": "Package VSIX",
+            "type": "shell",
+            "command": "npm version patch --no-git-tag-version && npx vsce package --allow-missing-repository --no-dependencies -y",
+            "problemMatcher": [],
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Install VSIX",
+            "type": "shell",
+            "command": "code --install-extension (Get-Item *.vsix | Sort-Object LastWriteTime -Descending | Select-Object -First 1).Name --force",
+            "problemMatcher": [],
+            "dependsOn": "Package VSIX",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Compile and Install",
+            "type": "shell",
+            "command": "npm version patch --no-git-tag-version && npm run compile && npx @vscode/vsce package --allow-missing-repository --no-dependencies && code --install-extension (Get-Item *.vsix | Sort-Object LastWriteTime -Descending | Select-Object -First 1).Name --force",
+            "problemMatcher": [
+                "$tsc"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Publish Extension",
+            "type": "shell",
+            "command": "npx vsce publish",
+            "problemMatcher": [],
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        }
+    ]
+}

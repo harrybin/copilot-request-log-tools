@@ -1,0 +1,174 @@
+{
+  "scopeName": "text.copilot-log-request",
+  "name": "Copilot Log Request",
+  "patterns": [
+    {
+      "include": "#metadata"
+    },
+    {
+      "include": "#frontmatter"
+    },
+    {
+      "include": "#sections"
+    },
+    {
+      "include": "#html-tags"
+    },
+    {
+      "include": "#xml-tags"
+    },
+    {
+      "include": "#json-highlight"
+    },
+    {
+      "include": "#placeholders"
+    }
+  ],
+  "repository": {
+    "frontmatter": {
+      "begin": "^(---)\\s*$",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.definition.metadata.begin.copilot-request"
+        }
+      },
+      "end": "^(---)\\s*$",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.definition.metadata.end.copilot-request"
+        }
+      },
+      "name": "meta.frontmatter.copilot-log-request",
+      "patterns": [
+        {
+          "match": "^([A-Za-z0-9_-]+)\\s*:(.*)$",
+          "captures": {
+            "1": {
+              "name": "entity.name.tag.yaml.copilot-log-request"
+            },
+            "2": {
+              "name": "string.unquoted.yaml.copilot-log-request"
+            }
+          }
+        }
+      ]
+    },
+    "sections": {
+      "match": "^(?:---\\s*(System|Input Messages|Tools|Request Shape|Attachments|Context)\\s*---|#{2,3}\\s*(System|Input Messages|Tools|Request Shape|Attachments|Context)\\s*)$",
+      "captures": {
+        "1": {
+          "name": "entity.name.section.copilot-log-request"
+        },
+        "2": {
+          "name": "entity.name.section.copilot-log-request"
+        }
+      }
+    },
+    "html-tags": {
+      "patterns": [
+        {
+          "match": "(<)([a-zA-Z][a-zA-Z0-9_:.\\-]*)([^>]*)(>)",
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.tag.begin"
+            },
+            "2": {
+              "name": "entity.name.tag"
+            },
+            "3": {
+              "name": "meta.tag.attributes"
+            },
+            "4": {
+              "name": "punctuation.definition.tag.end"
+            }
+          }
+        },
+        {
+          "match": "(</)([a-zA-Z][a-zA-Z0-9_:.\\-]*)(\\s*>)",
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.tag.begin"
+            },
+            "2": {
+              "name": "entity.name.tag"
+            },
+            "3": {
+              "name": "punctuation.definition.tag.end"
+            }
+          }
+        }
+      ]
+    },
+    "xml-tags": {
+      "patterns": [
+        {
+          "match": "</?\\s*(instructions|skills|name|description|agents|sessionMemory|userMemory|reminderInstructions)\\s*>",
+          "captures": {
+            "1": {
+              "name": "entity.name.tag.xml.copilot-log-request"
+            }
+          }
+        },
+        {
+          "match": "<(instructions|skills|name|description|agents|sessionMemory|userMemory|reminderInstructions)\\s*>",
+          "name": "punctuation.definition.tag.begin.xml.copilot-log-request"
+        },
+        {
+          "match": "</(instructions|skills|name|description|agents|sessionMemory|userMemory|reminderInstructions)\\s*>",
+          "name": "punctuation.definition.tag.end.xml.copilot-log-request"
+        }
+      ]
+    },
+    "placeholders": {
+      "match": "\\{\\{[A-Z0-9_:-]+\\}\\}|\\$\\{[^}]+\\}",
+      "name": "variable.other.placeholder.copilot-log-request"
+    },
+    "metadata": {
+      "match": "^([A-Za-z0-9 ]+?)\\s*:\\s*(.+?)$",
+      "captures": {
+        "1": {
+          "name": "entity.name.tag.metadata.copilot-log-request"
+        },
+        "2": {
+          "name": "string.unquoted.metadata.copilot-log-request"
+        }
+      }
+    },
+    "json-highlight": {
+      "patterns": [
+        {
+          "match": "\\b(true|false)\\b",
+          "name": "constant.language.boolean.json.copilot-log-request"
+        },
+        {
+          "match": "\\bnull\\b",
+          "name": "constant.language.null.json.copilot-log-request"
+        },
+        {
+          "match": "\"([^\"]+?)\"\\s*(?=:)",
+          "captures": {
+            "1": {
+              "name": "entity.name.tag.json.copilot-log-request"
+            }
+          }
+        },
+        {
+          "match": "\"name\"\\s*:\\s*\"([^\"]*?)\"",
+          "captures": {
+            "1": {
+              "name": "entity.name.function.json.copilot-log-request"
+            }
+          }
+        },
+        {
+          "match": "-?(?:0|[1-9]\\d*)(?:\\.\\d+)?(?:[eE][+-]?\\d+)?",
+          "name": "constant.numeric.json.copilot-log-request"
+        },
+        {
+          "match": "[\\[\\]\\{\\}:,]",
+          "name": "punctuation.separator.json.copilot-log-request"
+        }
+      ]
+    }
+  }
+}

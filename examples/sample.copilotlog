@@ -1,0 +1,18 @@
+---
+description: Prompt for validating request formatting from Copilot logs
+mode: ask
+tools: [read_file, apply_patch]
+model: gpt-5.3-codex
+---
+
+--- System ---
+Keep output concise.
+
+--- Input Messages ---
+- user: please normalize this request file
+
+--- Tools ---
+- read_file
+- apply_patch
+
+Use placeholder {{VSCODE_USER_PROMPTS_FOLDER}} where needed.
