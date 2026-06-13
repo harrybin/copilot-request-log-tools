@@ -1,3 +1,5 @@
+<video src="./demo.mp4" controls autoplay muted loop playsinline width="100%"></video>
+
 # GH Copilot Request Log Tools
 
 VS Code extension for:
@@ -61,12 +63,4 @@ Notes:
 2. Press `F5` to launch Extension Development Host.
 3. Open `examples/sample.copilotlog` and run `Format Document`.
 4. For unsaved files (`Untitled-*`), run the command above if auto-detection does not switch language mode yet.
-
-## Convert demo GIF to MP4
-
-Use ffmpeg to convert `demo.gif` to an MP4 file that is broadly compatible with players and browsers:
-
-```powershell
-ffmpeg -y -i .\demo.gif -movflags +faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" .\demo.mp4
-```
 
