@@ -28,35 +28,6 @@ npm install
 npm run compile
 ```
 
-## Package and publish
-
-1. Create a local token file from template:
-
-```bash
-cp .env.template .env
-```
-
-2. Set your Marketplace token in `.env`:
-
-```env
-MARKETPLACE_TOKEN=your_vscode_marketplace_pat
-```
-
-3. Package a VSIX:
-
-```bash
-npm run package:vscode
-```
-
-4. Publish to VS Code Marketplace:
-
-```bash
-npm run publish:vscode
-```
-
-Notes:
-- `publish:vscode` matches the `visuals-mcp` token style by reading `MARKETPLACE_TOKEN` from `.env`.
-- In CI, `VSCE_PAT` is also supported as a fallback.
 
 ## Run in VS Code
 1. Open this folder in VS Code.
