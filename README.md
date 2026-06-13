@@ -9,14 +9,13 @@ VS Code extension for:
 ## Supported files
 - `*.copilotlog`
 - `*.cplog`
-- `copilot-system.copilotlog`
 
 ## Features
-- Document formatter for language `copilot-log-request`
+- Document formatter for language `copilot-request-log`
 - Frontmatter normalization (ordering and spacing)
 - Body normalization (trailing whitespace and blank-line compaction)
 - Auto-detection for untitled files when content matches Copilot log request patterns
-- Command to force language mode on any open file: `Copilot Log Request: Use Copilot Log Request Language For Active Document`
+- Command to force language mode on any open file: `Copilot Request Log: Use Copilot Request Log Language For Active Document`
 - Highlighting for:
   - Frontmatter delimiters and keys
   - Section markers like `--- System ---` or `### System`
