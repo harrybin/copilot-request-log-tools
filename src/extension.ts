@@ -61,7 +61,7 @@ export function deactivate(): void {
   // No-op.
 }
 
-function formatCopilotLog(input: string, wrapWidth: number): string {
+export function formatCopilotLog(input: string, wrapWidth: number): string {
   const normalized = input.replace(/\r\n/g, "\n");
   const lines = normalized.split("\n");
   const result: string[] = [];
@@ -206,8 +206,8 @@ async function maybeAssignCopilotLogLanguage(document: vscode.TextDocument): Pro
   await vscode.languages.setTextDocumentLanguage(document, "copilot-log-request");
 }
 
-function isLikelyCopilotLogRequest(text: string): boolean {
-  const hasRoleSection = /^---\s*(System|Input Messages|Tools|Request Shape|Attachments|Context)\s*---$/im.test(text);
+export function isLikelyCopilotLogRequest(text: string): boolean {
+  const hasRoleSection = /^---\s*(System|Input Messages|Tools|Request Shape|Attachments|Context|User Request)\s*---$/im.test(text);
   const hasTelemetryHeader = /^Request:\s+/im.test(text) && /^Model:\s+/im.test(text);
   const hasFrontmatter = /^---\n[\s\S]*\n---\n/m.test(text);
   const hasKnownFrontmatterKey = /^(description|mode|tools|model)\s*:/im.test(text);

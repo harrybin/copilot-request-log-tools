@@ -6,19 +6,19 @@
             "include": "#file-tag-path"
         },
         {
-            "include": "#metadata"
+            "include": "#frontmatter"
         },
         {
-            "include": "#frontmatter"
+            "include": "#top-metadata"
         },
         {
             "include": "#sections"
         },
         {
-            "include": "#html-tags"
+            "include": "#xml-tags"
         },
         {
-            "include": "#xml-tags"
+            "include": "#html-tags"
         },
         {
             "include": "#json-highlight"
@@ -82,7 +82,7 @@
             ]
         },
         "sections": {
-            "match": "^(?:---\\s*(System|Input Messages|Tools|Request Shape|Attachments|Context)\\s*---|#{2,3}\\s*(System|Input Messages|Tools|Request Shape|Attachments|Context)\\s*)$",
+            "match": "^(?:---\\s*(System|Input Messages|Tools|Request Shape|Attachments|Context|User Request)\\s*---|#{2,3}\\s*(System|Input Messages|Tools|Request Shape|Attachments|Context|User Request)\\s*)$",
             "captures": {
                 "1": {
                     "name": "entity.name.section.copilot-log-request"
@@ -91,6 +91,46 @@
                     "name": "entity.name.section.copilot-log-request"
                 }
             }
+        },
+        "top-metadata": {
+            "begin": "\\A",
+            "end": "^(?=\\s*$|---\\s*(?:System|Input Messages|Tools|Request Shape|Attachments|Context|User Request)\\s*---|#{2,3}\\s*(?:System|Input Messages|Tools|Request Shape|Attachments|Context|User Request)\\s*$)",
+            "name": "meta.header.copilot-log-request",
+            "patterns": [
+                {
+                    "match": "^(name)\\s*:\\s*(.+?)$",
+                    "captures": {
+                        "1": {
+                            "name": "entity.name.tag.metadata.copilot-log-request"
+                        },
+                        "2": {
+                            "name": "entity.name.function.copilot-log-request"
+                        }
+                    }
+                },
+                {
+                    "match": "^([A-Za-z0-9 ]+?)\\s*:\\s*((?:[A-Za-z]:\\\\|\\\\\\\\|/).+?)$",
+                    "captures": {
+                        "1": {
+                            "name": "entity.name.tag.metadata.copilot-log-request"
+                        },
+                        "2": {
+                            "name": "string.other.path.copilot-log-request"
+                        }
+                    }
+                },
+                {
+                    "match": "^([A-Za-z0-9 ]+?)\\s*:\\s*(.+?)$",
+                    "captures": {
+                        "1": {
+                            "name": "entity.name.tag.metadata.copilot-log-request"
+                        },
+                        "2": {
+                            "name": "string.unquoted.metadata.copilot-log-request"
+                        }
+                    }
+                }
+            ]
         },
         "file-tag-path": {
             "begin": "(<file>)",
@@ -220,13 +260,17 @@
                 {
                     "match": "(?<![A-Za-z0-9_])(?:/(?:[^/\\s]+/)*[^/\\s]+)(?![A-Za-z0-9_])",
                     "name": "string.other.path.copilot-log-request"
+                },
+                {
+                    "match": "(?<![A-Za-z0-9_])(?:\\.{1,2}[\\\\/](?:[^\\\\/\\s]+[\\\\/])*[^\\\\/\\s]+|[A-Za-z0-9._-]+(?:[\\\\/][A-Za-z0-9._-]+)+)(?![A-Za-z0-9_])",
+                    "name": "string.other.path.copilot-log-request"
                 }
             ]
         },
         "json-highlight": {
             "patterns": [
                 {
-                    "match": "\\\"((?:[A-Za-z]:\\\\(?:[^\\\"\\\\]|\\\\.)*|[A-Za-z]:\\\\\\\\(?:[^\\\"\\\\]|\\\\.)*|\\\\\\\\(?:[^\\\"\\\\]|\\\\.)+|/(?:[^\\\"\\\\]|\\\\.)*))\\\"",
+                    "match": "\\\"((?:[A-Za-z]:\\\\(?:[^\\\"\\\\]|\\\\.)*|[A-Za-z]:\\\\\\\\(?:[^\\\"\\\\]|\\\\.)*|\\\\\\\\(?:[^\\\"\\\\]|\\\\.)+|/(?:[^\\\"\\\\]|\\\\.)*|\\.{1,2}[\\\\/](?:[^\\\"\\\\]|\\\\.)*|[A-Za-z0-9._-]+(?:[\\\\/][A-Za-z0-9._-]+)+))\\\"",
                     "captures": {
                         "1": {
                             "name": "string.other.path.copilot-log-request"

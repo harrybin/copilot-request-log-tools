@@ -1,7 +1,7 @@
 {
   "name": "copilot-log-request-tools",
   "displayName": "GH Copilot Request Log Tools",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Formatter and syntax highlighting for Copilot request artifacts captured from log files, especially system prompt sections.",
   "icon": "assets/icon.png",
   "publisher": "harrybin",
@@ -66,7 +66,7 @@
     "compile": "tsc -p .",
     "watch": "tsc -p . -w",
     "vscode:prepublish": "npm run compile",
-    "test": "npm run compile",
+    "test": "npm run compile && node --test tests/*.test.js",
     "package:vscode": "npx @vscode/vsce package --allow-missing-repository --no-dependencies",
     "publish:vscode": "node scripts/vsce-publish.cjs"
   },
