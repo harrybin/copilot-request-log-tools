@@ -13,10 +13,8 @@
     "Programming Languages"
   ],
   "activationEvents": [
-    "onLanguage:copilot-log-request",
     "onLanguage:plaintext",
-    "onLanguage:markdown",
-    "onCommand:copilotLogRequest.useForActiveDocument"
+    "onLanguage:markdown"
   ],
   "main": "./out/extension.js",
   "contributes": {
