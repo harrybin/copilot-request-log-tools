@@ -1,4 +1,4 @@
-<video src="./demo.mp4" controls autoplay muted loop playsinline width="100%"></video>
+[View demo video](./demo.mp4)
 
 # GH Copilot Request Log Tools
 
