@@ -4,7 +4,7 @@
   "version": "0.1.8",
   "description": "Formatter and syntax highlighting for Copilot request artifacts captured from log files, especially system prompt sections.",
   "icon": "assets/icon.png",
-  "publisher": "Hatald Binkle [harrybin]",
+  "publisher": "harrybin",
   "engines": {
     "vscode": "^1.120.0"
   },
@@ -79,6 +79,10 @@
     "syntax-highlighting"
   ],
   "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/harrybin/copilot-request-log-tools.git"
+  },
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {

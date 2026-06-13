@@ -62,3 +62,11 @@ Notes:
 3. Open `examples/sample.copilotlog` and run `Format Document`.
 4. For unsaved files (`Untitled-*`), run the command above if auto-detection does not switch language mode yet.
 
+## Convert demo GIF to MP4
+
+Use ffmpeg to convert `demo.gif` to an MP4 file that is broadly compatible with players and browsers:
+
+```powershell
+ffmpeg -y -i .\demo.gif -movflags +faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" .\demo.mp4
+```
+

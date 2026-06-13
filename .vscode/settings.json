@@ -4,6 +4,6 @@
     "*.cplog": "copilot-log-request"
   },
   "[copilot-log-request]": {
-    "editor.defaultFormatter": "local.copilot-log-request-tools"
+    "editor.defaultFormatter": "harrybin.copilot-log-request-tools"
   }
 }
