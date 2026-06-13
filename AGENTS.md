@@ -44,3 +44,19 @@ There are no automated tests beyond `npm run compile`.
 - Changes to `package.json` contributions (commands, grammars, languages) require re-packaging or reloading the Extension Development Host — a compile alone is not sufficient.
 - The grammar file uses `text.html.markdown` as a base grammar fallback; ensure TextMate scope names follow the `*.copilot-log-request` suffix convention.
 - When modifying the formatter, verify both frontmatter-present and frontmatter-absent code paths, and check the `normalizeBody` blank-line collapsing logic independently.
+
+## Agent workflow guardrails
+
+- **Task-first execution**: when a matching VS Code task exists (compile/package/install), prefer running the task over ad hoc shell commands.
+- **Always verify current file state first**: before iterative doc/media edits (especially `README.md`), re-read the current top section and patch only the targeted block.
+- **GitHub README compatibility**: prefer GitHub-safe Markdown constructs. Do not rely on HTML video embedding in `README.md`; use GIF/image or a link fallback.
+- **No "done" without runtime proof**: for user-visible behavior changes (grammar, highlighting, language config, contributions), include concrete validation evidence before reporting completion.
+
+## Validation checklist for grammar/contribution changes
+
+When editing `syntaxes/copilot-request.tmLanguage.json`, `package.json` contributions, or `language-configuration.json`, complete all steps:
+
+1. Run compile (`npm run compile` or workspace compile task).
+2. Re-package and reinstall the VSIX (or run Extension Development Host via F5 when appropriate).
+3. Validate behavior in `examples/sample.copilotlog`.
+4. Report what was verified (command/task run + file opened + expected behavior observed).
