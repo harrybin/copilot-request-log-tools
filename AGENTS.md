@@ -48,9 +48,9 @@ There are no automated tests beyond `npm run compile`.
 ## Agent workflow guardrails
 
 - **Task-first execution**: when a matching VS Code task exists (compile/package/install), prefer running the task over ad hoc shell commands.
-- **Always verify current file state first**: before iterative doc/media edits (especially `README.md`), re-read the current top section and patch only the targeted block.
+- **Always verify current file state first**: before iterative doc/media edits (especially `README.md`), re-read at minimum the first 50 lines of the file (or through the end of the first H2 section, whichever is longer) to confirm current state before patching only the targeted block.
 - **GitHub README compatibility**: prefer GitHub-safe Markdown constructs. Do not rely on HTML video embedding in `README.md`; use GIF/image or a link fallback.
-- **No "done" without runtime proof**: for user-visible behavior changes (grammar, highlighting, language config, contributions), include concrete validation evidence before reporting completion.
+- **No "done" without runtime proof**: before reporting completion for user-visible behavior changes (grammar, highlighting, language config, contributions), paste the actual terminal output of the compile/package command and describe the exact observed behavior (for example, a token scope shown in VS Code hover or a color applied to a specific line in `sample.copilotlog`).
 
 ## Validation checklist for grammar/contribution changes
 
