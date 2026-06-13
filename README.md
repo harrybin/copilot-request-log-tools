@@ -1,4 +1,4 @@
-[View demo video](./demo.mp4)
+![demo](./demo.gif)
 
 # GH Copilot Request Log Tools
 
